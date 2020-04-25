@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
+    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
+
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>"/>
+    <meta property="og:url" content="<%= htmlWebpackPlugin.options.baseUrl %>" />
+    <meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>" />
+    <meta property="og:image" content="<%= htmlWebpackPlugin.options.baseUrl %>/showcase/Banner.png"/>
+    <meta property="og:type" content="website" />
+
+    <meta itemprop="name" content="<%= htmlWebpackPlugin.options.title %>">
+    <html itemscope itemtype="<%= htmlWebpackPlugin.options.baseUrl %>">
+    <meta itemprop="description" content="<%= htmlWebpackPlugin.options.description %>">
+    <meta itemprop="image" content="<%= htmlWebpackPlugin.options.baseUrl %>/showcase/Banner.png">
+
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

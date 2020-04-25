@@ -1,0 +1,22 @@
+service: simple-webshop-service
+
+plugins:
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-1
+  stage: production
+
+functions:
+  getProducts:
+    handler: handler.get
+    events:
+      - http:
+          path: products
+          description: Gets available products from Stripe
+          method: get
+          cors: true
+    environment:
+      STRIPE_SECRET_KEY: ${env:STRIPE_SECRET_KEY}
