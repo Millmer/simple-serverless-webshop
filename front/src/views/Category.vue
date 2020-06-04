@@ -4,9 +4,7 @@
       <div class="pt-10 pb-8">
         <h1 class="text-5xl font-light">{{ categories[slug] }}</h1>
       </div>
-      <div
-        class="flex flex-1 flex-wrap flex-row justify-evenly md:justify-between items-center md:items-stretch"
-      >
+      <div class="flex flex-1 flex-wrap flex-row justify-evenly items-center">
         <ListItem
           v-for="(item, index) in inventoryForSluggedCategory(slug)"
           :key="index"
