@@ -72,7 +72,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getItemById: state => id => state.inventory.find(item => item.id === id),
+    getItemById: state => id =>
+      state.inventory.find(item => item.id === id) || {},
     getShowcaseItem: state => {
       const showcase = state.inventory.find(item => item.tag === "showcase");
       return showcase || state.inventory[0];

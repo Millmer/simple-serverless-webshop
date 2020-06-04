@@ -68,10 +68,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(["denomination"]),
+    ...mapState(["inventory", "denomination"]),
     ...mapGetters(["getItemById"])
   },
   watch: {
+    inventory() {
+      this.item = this.getItemById(this.$route.params.id);
+    },
     $route(to) {
       this.item = this.getItemById(to.params.id);
     }
