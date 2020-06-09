@@ -108,7 +108,8 @@ export default {
       this.loading = true;
       try {
         const { error } = await stripe.redirectToCheckout({
-          items: this.stripeItems,
+          lineItems: this.stripeItems,
+          mode: "payment",
           successUrl: this.successUrl,
           cancelUrl: this.cancelUrl,
           shippingAddressCollection: {

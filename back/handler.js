@@ -12,32 +12,32 @@ const axiosBaseParams = {
 
 module.exports.get = async () => {
     const productsRequest = axios.request({ url: `${stripeBaseURL}/products`, ...axiosBaseParams });
-    const skusRequest = axios.request({ url: `${stripeBaseURL}/skus`, ...axiosBaseParams });
+    const pricesRequest = axios.request({ url: `${stripeBaseURL}/prices`, ...axiosBaseParams });
 
     try {
-        const [productsResponse, skusResponse] = await Promise.all([productsRequest, skusRequest]);
+        const [productsResponse, pricesResponse] = await Promise.all([productsRequest, pricesRequest]);
         const products = productsResponse.data.data.reduce((result, product) => {
             result[product.id] = product;
             return result;
         }, {});
 
-        const skus = skusResponse.data.data;
+        const prices = pricesResponse.data.data;
         const inventory = [];
-        skus.forEach(sku => {
-            const product = products[sku.product];
+        prices.forEach(price => {
+            const product = products[price.product];
 
             // If product is not "archived" (i.e. it's not out of stock)
             // then add it to the list
             if (product) {
                 const categories = (product.metadata.categories) ? [...product.metadata.categories.split(",").map(str => str.trim()), 'all'] : ['all'];
-                const description = (product.metadata.description) ? product.metadata.description : '';
+                const description = (product.description) ? product.description : (product.metadata.description) ? product.metadata.description : '';
                 const tag = (product.metadata.tag) ? product.metadata.tag.toLowerCase() : '';
                 const item = {
-                    id: sku.id.replace("sku_", ''),
+                    id: price.id.replace("price_", ""),
                     name: product.name,
                     categories,
-                    price: Math.round(((sku.price / 100) + Number.EPSILON) * 100) / 100,
-                    image: sku.image,
+                    price: Math.round(((price.unit_amount / 100) + Number.EPSILON) * 100) / 100,
+                    image: product.images[0],
                     description,
                     tag
                 };

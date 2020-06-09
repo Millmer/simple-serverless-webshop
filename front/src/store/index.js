@@ -121,7 +121,7 @@ export default new Vuex.Store({
     },
     stripeItems: state => {
       return state.cart.map(item => {
-        return { sku: `sku_${item.id}`, quantity: item.quantity };
+        return { price: `price_${item.id}`, quantity: item.quantity };
       });
     }
   },
