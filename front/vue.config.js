@@ -9,6 +9,7 @@ module.exports = {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias adipisci ipsum facilis laudantium necessitatibus a reprehenderit laboriosam nihil asperiores ipsa corrupti, ducimus illum provident officia, temporibus, tempora error eaque autem.",
       keywords: "simple, serverless, webshop, stripe, e-commerce",
       template: "public/index.html",
+      googleAnalyticsId: "UA-123ABC-1",
       baseUrl,
       filename: "index.html"
     }
